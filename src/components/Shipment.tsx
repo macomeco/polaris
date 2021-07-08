@@ -1,7 +1,10 @@
 import { Button, Card, Layout,ResourceItem,ResourceList,Stack,TextStyle} from "@shopify/polaris";
 //対象商品
 import {  DeleteMinor,EditMinor,ResetMinor } from '@shopify/polaris-icons';
+import { Item } from "@shopify/polaris/dist/types/latest/src/components/FormLayout/components";
+import { useCallback, useState } from "react";
 import ShipmentSettings from "./ShipmentSettings";
+import ShipmentSettingsVFC from "./ShipmentSettingsVFC";
 export default function Shipment(){
     type categoryitem={
         id:string,
@@ -36,7 +39,7 @@ export default function Shipment(){
         <>
             <Layout.Section>
                 <Card title="Shipment"  primaryFooterAction={{content:'Save'}} >
-                    <Card.Section >
+                    <Card.Section>
                         <ResourceList
                             items={categoriesItem}
                             renderItem={renderItem}
@@ -46,7 +49,7 @@ export default function Shipment(){
                     </Card.Section>
                 </Card>
             </Layout.Section>
-            <ShipmentSettings />
+            <ShipmentSettingsVFC ShipmentCompany="" />
         </>
     );
     function renderItem(item:categoryitem){
@@ -58,11 +61,12 @@ export default function Shipment(){
                 name={name}
                 onClick={()=>{}}
             >
+                
                 <Stack>
                     <Stack.Item fill>
                         <TextStyle variation="strong">{name}</TextStyle>
                     </Stack.Item>
-                    
+                    <p>aaa</p>
                     <TextStyle variation="subdued">全国一律・一部地域設定</TextStyle>
                     <Stack.Item>
                         <Button icon={EditMinor} primary onClick={()=>{}}></Button>
@@ -72,7 +76,6 @@ export default function Shipment(){
                     </Stack.Item>
                 </Stack>
             </ResourceItem>
-            
             </>
         )
     }

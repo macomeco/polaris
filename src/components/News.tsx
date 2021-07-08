@@ -41,7 +41,6 @@ export default function News(){
                     selected={selectedResources.includes(id)}
                     position={index}
                 >
-                    
                     <IndexTable.Cell>
                         <TextStyle variation="strong" >{title}</TextStyle>
                         </IndexTable.Cell>

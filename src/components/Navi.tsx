@@ -1,10 +1,11 @@
 import { Frame, Page,Layout,  Navigation,DisplayText } from "@shopify/polaris";
 import {HomeMajor ,OrdersMajor,ProductsMajor,CustomersMajor, CategoriesMajor, FeaturedContentMajor,ShipmentMajor,SettingsMajor,StoreMajor} from "@shopify/polaris-icons";
 import { useCallback, useState } from "react";
-
+/*
 import Apple from './Apple';
 import Lemon from './Lemon';
 import Melon from './Melon';
+*/
 import Peach from './Peach';
 
 import ProductsMaster from "./ProductsMaster";
