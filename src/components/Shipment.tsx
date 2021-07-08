@@ -1,9 +1,6 @@
 import { Button, Card, Layout,ResourceItem,ResourceList,Stack,TextStyle} from "@shopify/polaris";
 //対象商品
-import {  DeleteMinor,EditMinor,ResetMinor } from '@shopify/polaris-icons';
-import { Item } from "@shopify/polaris/dist/types/latest/src/components/FormLayout/components";
-import { useCallback, useState } from "react";
-import ShipmentSettings from "./ShipmentSettings";
+import {  EditMinor,ResetMinor } from '@shopify/polaris-icons';
 import ShipmentSettingsVFC from "./ShipmentSettingsVFC";
 export default function Shipment(){
     type categoryitem={
@@ -53,7 +50,7 @@ export default function Shipment(){
         </>
     );
     function renderItem(item:categoryitem){
-        const {id,name,num}=item;
+        const {id,name}=item;
         return(
             <>
             <ResourceItem
