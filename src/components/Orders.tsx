@@ -20,27 +20,19 @@ export default function Orders(){
         return (<>
             <Layout.Section>
                 <Card>
-                    
-                <DataTable
-                    columnContentTypes={[
-                    'text', //テキスト
-                    'numeric',  //数値
-                    'numeric',
-                    'numeric',
-                    'numeric',
-                    ]}
-                    headings={[
-                    '状況',
-                    '件数',
-                    '個数',
-                    '客数',
-                    '売上',
-                    
-                    ]}
-                    rows={rows}
-                    totals={['', 200,  560,200, '¥'+profit.reduce(function(a,b){return a+b})]}
-                    showTotalsInFooter
-                />
+                    <DataTable
+                        columnContentTypes={[
+                        'text', //テキスト
+                        'numeric',  //数値
+                        'numeric','numeric','numeric',
+                        ]}
+                        headings={[
+                            '状況','件数','個数','客数','売上',
+                        ]}
+                        rows={rows}
+                        totals={['', 200,  560,200, '¥'+profit.reduce(function(a,b){return a+b})]}
+                        showTotalsInFooter
+                    />
                 </Card>
             </Layout.Section>
             <OrderSort />

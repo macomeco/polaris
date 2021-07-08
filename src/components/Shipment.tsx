@@ -61,13 +61,11 @@ export default function Shipment(){
                 name={name}
                 onClick={()=>{}}
             >
-                
                 <Stack>
                     <Stack.Item fill>
                         <TextStyle variation="strong">{name}</TextStyle>
                     </Stack.Item>
-                    <p>aaa</p>
-                    <TextStyle variation="subdued">全国一律・一部地域設定</TextStyle>
+                    <TextStyle variation="subdued">全国一律　離島・一部地域設定</TextStyle>
                     <Stack.Item>
                         <Button icon={EditMinor} primary onClick={()=>{}}></Button>
                     </Stack.Item>
