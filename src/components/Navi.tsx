@@ -26,7 +26,7 @@ export default function Navi(){
         ()=>setNaviActive((NaviActive) => !NaviActive)
     ,[]);
     */
-    const [flag,setFlag]=useState('');
+    const [flag,setFlag]=useState('Home');
     const handleflag=useCallback (
         (newflag)=>{setFlag(newflag);console.log(newflag)},[]
     );
