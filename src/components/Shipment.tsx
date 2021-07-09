@@ -67,7 +67,7 @@ export default function Shipment(){
                         <Button icon={EditMinor} primary onClick={()=>{}}></Button>
                     </Stack.Item>
                     <Stack.Item>
-                        <Button icon={ ResetMinor} monochrome outline onClick={()=>{}}></Button>
+                        <Button icon={ ResetMinor} monochrome outline onClick={()=>{alert('初期設定に戻しますか？')}}></Button>
                     </Stack.Item>
                 </Stack>
             </ResourceItem>

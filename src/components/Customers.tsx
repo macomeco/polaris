@@ -1,4 +1,4 @@
-import { Avatar, Badge, Card, Layout, ResourceItem, ResourceList, ResourceListSelectedItems, Stack, TextStyle } from "@shopify/polaris";
+import { Avatar, Badge, Card, Layout, ResourceItem, ResourceList, ResourceListSelectedItems, Stack, TextStyle,TextField, FormLayout } from "@shopify/polaris";
 import { useState } from "react";
 
 export default function Customers(){
@@ -160,8 +160,11 @@ export default function Customers(){
             </Card>
         </Layout.Section>
         <Layout.Section secondary>
-            <Card primaryFooterAction={{content:'Sort'}} title="Sort">
-                <Card.Section title="Name">
+            <Card primaryFooterAction={{content:'Search'}} title="Search">
+                <Card.Section title="">
+                    <FormLayout>
+                        <TextField label="Name" onChange={()=>{}}></TextField>
+                    </FormLayout>
                 </Card.Section>
             </Card>
         </Layout.Section>

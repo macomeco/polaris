@@ -1,5 +1,6 @@
 import { Card,DataTable, Layout, } from "@shopify/polaris";
 import OrderSort from "./OrderSort";
+import OrderDetails from "./OrderDetails";
 //Saleの売り上げ　にんきしょうひん、金額 クーポン利用など
 export default function Orders(){
 
@@ -34,8 +35,13 @@ export default function Orders(){
                         showTotalsInFooter
                     />
                 </Card>
+                <OrderDetails />
             </Layout.Section>
+            
+            
             <OrderSort />
+            
+            
 
         </>);
 }
