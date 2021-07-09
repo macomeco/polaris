@@ -1,7 +1,7 @@
 {
   "name": "test0628",
   "version": "0.1.0",
-  "homepage": "https://github.com/macomeco.github.io/polaris",
+  "homepage": "https://macomeco.github.io/polaris/",
   "private": true,
   "dependencies": {
     "@shopify/polaris": "^6.5.0",
