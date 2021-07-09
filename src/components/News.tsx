@@ -1,13 +1,13 @@
-import { Card, IndexTable, Layout,TextStyle,useIndexResourceState,TextField} from "@shopify/polaris";
-import {
-    MobilePlusMajor
-  } from '@shopify/polaris-icons';
+import { Card, IndexTable, Layout,TextStyle,useIndexResourceState,TextField, FormLayout} from "@shopify/polaris";
+import { MobilePlusMajor } from '@shopify/polaris-icons';
+import { useCallback, useState } from "react";
 //news blog mail magazine sale
 //sort
 export default function News(){
     type newsType={
         start:number,
         end:number,
+        date:string,
         title:string,
         id:string,
         show:boolean,
@@ -16,45 +16,60 @@ export default function News(){
         {
             start: 20210101,
             end: 20200107,
-            title:'Sample title',
+            date: 'Oct 15, 2015',
+            title:'Sample ',
             id:'1',
+            show:true,
+        },
+        {
+            start: 20210101,
+            end: 20200107,
+            date: 'Oct 20, 2015',
+            title:'入荷しました',
+            id:'2',
             show:true,
         },
         
     ];
-        const resourceName = {
-            singular: 'article',
-            plural: 'artciles',
-        };
+    const resourceName = {
+        singular: 'article',
+        plural: 'artciles',
+    };
     
-        const {
-        selectedResources,
-        allResourcesSelected,
-        handleSelectionChange,
-        } = useIndexResourceState(news);
-    
-        const rowMarkupII = news.map(
-            ({id, title,start,end, show}, index) => (
-                <IndexTable.Row
-                    id={id}
-                    key={id}
-                    selected={selectedResources.includes(id)}
-                    position={index}
-                >
-                    <IndexTable.Cell>
-                        <TextStyle variation="strong" >{title}</TextStyle>
-                        </IndexTable.Cell>
-                    <IndexTable.Cell>{start} - {end}</IndexTable.Cell>
-                    <IndexTable.Cell>{show?'show':'hide'}</IndexTable.Cell>
-                </IndexTable.Row>
-            ),
-            );
-    
+    const {
+    selectedResources,
+    allResourcesSelected,
+    handleSelectionChange,
+    } = useIndexResourceState(news);
+
+    const rowMarkupII = news.map(
+        ({id, title,date, show}, index) => (
+            <IndexTable.Row
+                id={id}
+                key={id}
+                selected={selectedResources.includes(id)}
+                position={index}
+            >
+                <IndexTable.Cell>
+                    <TextStyle variation="strong" >{title}</TextStyle>
+                    </IndexTable.Cell>
+                <IndexTable.Cell>{date}</IndexTable.Cell>
+                <IndexTable.Cell>{show?'show':'hide'}</IndexTable.Cell>
+            </IndexTable.Row>
+        ),
+    );
+    const [NewsCreate, setNewsCreate]=useState(false);
+    const NewsCreateToggleAdd = useCallback(
+        ()=>{setNewsCreate((NewsCreate)=>true);}
+    ,[]);
+    const NewsCreateToggleCansel = useCallback(
+        ()=>{setNewsCreate((NewsCreate)=>false);}
+    ,[]);
+
         return (
             <>
-            
             <Layout.Section >
-            <Card primaryFooterAction={{icon:MobilePlusMajor}}>
+            <Card primaryFooterAction={{icon:MobilePlusMajor,onAction:()=>{NewsCreateToggleAdd()}}}>
             <Card.Header
                     title="News"
                     actions={[
@@ -87,19 +102,29 @@ export default function News(){
                 </IndexTable>
                 </Card.Section>
             </Card>
-            <Card>
-                <Card.Section title="Create">
-                    <TextField
-                        label="title"
-                        onChange={()=>{}}
-                    />
-                    <TextField
-                        label="article"
-                        onChange={()=>{}}
-                        multiline={3}
-                    />
+            {NewsCreate===true &&
+            <Card title="Create News"primaryFooterAction={{content:'Add'}}secondaryFooterActions={[{content:'Cansel',onAction:()=>{NewsCreateToggleCansel()}}]}>
+                <Card.Section >
+                    <FormLayout>
+                        <FormLayout.Group>
+                        <TextField
+                            label="title"
+                            onChange={()=>{}}
+                        />
+                        <TextField
+                            label="date"
+                            onChange={()=>{}}
+                        />
+                        </FormLayout.Group>
+                        <TextField
+                            label="article"
+                            onChange={()=>{}}
+                            multiline={3}
+                        />
+                    </FormLayout>
                 </Card.Section>
             </Card>
+            }
         </Layout.Section>
         </>
         );
