@@ -89,8 +89,11 @@ export default function AddProducts(){
                         </FormLayout>
                     </Card.Section>
                 </Card>
-            </FormLayout></Form>
+            </FormLayout>
+            </Form>
+            
         </Layout.Section>
+        
         </>
     );
 }

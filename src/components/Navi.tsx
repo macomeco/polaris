@@ -8,7 +8,7 @@ import Melon from './Melon';
 */
 import Peach from './Peach';
 
-import ProductsMaster from "./ProductsMaster";
+//import ProductsMaster from "./ProductsMaster";
 import Categories from "./Categories";
 import Blogs from "./Blogs";
 import News from './News';
@@ -17,6 +17,7 @@ import AddProducts from "./AddProducts";
 import Shipment from "./Shipment";
 import Orders from "./Orders";
 import Customers from "./Customers";
+import AllProducts from "./AllProducts";
 
 
 export default function Navi(){
@@ -28,7 +29,7 @@ export default function Navi(){
     */
     const [flag,setFlag]=useState('Home');
     const handleflag=useCallback (
-        (newflag)=>{setFlag(newflag);console.log(newflag)},[]
+        (newflag)=>{setFlag(newflag);console.log(newflag); console.log(newflag)},[]
     );
     type pagetitle={
         title:string,
@@ -51,22 +52,33 @@ export default function Navi(){
                     
                     {
                         url: '/',
-                        label: 'Products',
+                        label: 'All Products',
                         icon: ProductsMajor,
                         badge:'1',
-                        onClick: ()=>handleflag('Products')
-                        /*subNavigationItems:[
+                        onClick: ()=>{handleflag('All Products');},
+                        /*
+                        subNavigationItems:[
                             {
+                                
+                                onClick: ()=>{handleflag('Products');},
                                 url:'/',
-                                label:'profuct',
+                                label:'All Products',
                                 //new:true,
                             },
                             {
                                 url:'/path',
-                                label:'profuct',
-                                
+                                label:'Create prduct',
+                                onClick: ()=>handleflag('Create Product'),
                             }
-                        ]*/
+                        ]
+                        */
+                    
+                    },
+                    {
+                        url:'/',
+                        label:'Create Product',
+                        icon:  ProductsMajor,
+                        onClick: ()=>handleflag('Create Products')
                     },
                     {
                         url:'/',
@@ -143,7 +155,9 @@ export default function Navi(){
                 {flag==='Customers'&&<><Customers /></>}
                 
                 {flag==='Categories'&&<><Categories /></>}
-                {flag==='Products'&&<><AddProducts /><ProductsMaster /></>}
+                {flag==='All Products'&&<><AllProducts /></>}
+                {flag==='Create Products'&&<><AddProducts /></>}
+
                 {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
                 {flag==='Shipment'&&<><Shipment /></>}
                 
