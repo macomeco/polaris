@@ -1,11 +1,7 @@
 import { Frame, Page,Layout,  Navigation,DisplayText } from "@shopify/polaris";
 import {HomeMajor ,OrdersMajor,ProductsMajor,CustomersMajor, CategoriesMajor, FeaturedContentMajor,ShipmentMajor,SettingsMajor,StoreMajor} from "@shopify/polaris-icons";
 import { useCallback, useState } from "react";
-/*
-import Apple from './Apple';
-import Lemon from './Lemon';
-import Melon from './Melon';
-*/
+
 import Peach from './Peach';
 
 //import ProductsMaster from "./ProductsMaster";
@@ -18,7 +14,7 @@ import Shipment from "./Shipment";
 import Orders from "./Orders";
 import Customers from "./Customers";
 import AllProducts from "./AllProducts";
-
+import ToDo from "./ToDo";
 
 export default function Navi(){
     /*
@@ -123,7 +119,7 @@ export default function Navi(){
                     },
                 ]}
                 rollup={{
-                    after:7,    //可視数
+                    after:8,    //可視数
                     view: 'view',
                     hide: 'hide',
                     activePath: '/',
@@ -151,7 +147,7 @@ export default function Navi(){
             <PageTitle title={flag}/>
             
                 {flag==='Orders'&&<><Orders /></>}
-                {flag==='Home'&&<><Peach /></>}
+                {flag==='Home'&&<><Peach /><ToDo /></>}
                 {flag==='Customers'&&<><Customers /></>}
                 
                 {flag==='Categories'&&<><Categories /></>}
@@ -167,15 +163,3 @@ export default function Navi(){
     </Page>
     </>);
 };
-/*
-
-
-                
-                
-                <Apple />
-                <Melon />
-                <Lemon />
-                <Peach />
-                
-
-*/
