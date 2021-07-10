@@ -66,6 +66,8 @@ export default function News(){
         ()=>{setNewsCreate((NewsCreate)=>false);}
     ,[]);
 
+    const today = new Date();
+    const todaystr = today.toDateString();
         return (
             <>
             <Layout.Section >
@@ -114,7 +116,9 @@ export default function News(){
                         <TextField
                             label="date"
                             onChange={()=>{}}
+                            value={todaystr}
                         />
+
                         </FormLayout.Group>
                         <TextField
                             label="article"
