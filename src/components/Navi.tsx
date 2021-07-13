@@ -1,6 +1,6 @@
-import { Frame, Page,Layout,  Navigation,DisplayText } from "@shopify/polaris";
+import { Frame, Page,Layout,  Navigation,DisplayText, AppProvider } from "@shopify/polaris";
 import {HomeMajor ,OrdersMajor,ProductsMajor,CustomersMajor, CategoriesMajor, FeaturedContentMajor,ShipmentMajor,SettingsMajor,StoreMajor} from "@shopify/polaris-icons";
-import { useCallback, useState } from "react";
+import { useCallback, useState, VFC } from "react";
 
 import Peach from './Peach';
 
@@ -15,26 +15,25 @@ import Orders from "./Orders";
 import Customers from "./Customers";
 import AllProducts from "./AllProducts";
 import ToDo from "./ToDo";
+//import Settings from './Settings';
+import SettingsCopy from './Settings_copy';
 
-export default function Navi(){
-    /*
-    const [NaviActive,setNaviActive]=useState(true);
-    const toggleNavi = useCallback(
-        ()=>setNaviActive((NaviActive) => !NaviActive)
-    ,[]);
-    */
+const Navi: VFC=(NaviProps)=>{
     const [flag,setFlag]=useState('Home');
     const handleflag=useCallback (
         (newflag)=>{setFlag(newflag);console.log(newflag); console.log(newflag)},[]
     );
     type pagetitle={
-        title:string,
+        title:string;
     };
-    const PageTitle: React.VFC<pagetitle>=(props)=>(
+    const PageTitle: React.VFC<pagetitle>=({setcolor})=>(
         <Layout.Section>
             <DisplayText size="large">{props.title}</DisplayText>
         </Layout.Section>
     );
+
+    const [themecolor,setthemecolor]=useState<"light" | "dark" | "inverse" | undefined>(NaviProps.setcolor);
+
     const NaviContents=(
         <Navigation location="/">
             <Navigation.Section
@@ -111,7 +110,7 @@ export default function Navi(){
                         url: '/',
                         label: 'Settings',
                         icon:  SettingsMajor,
-                        onClick: ()=>{handleflag('Setting')}
+                        onClick: ()=>{handleflag('Settings')}
                     },
                 ]}
                 rollup={{
@@ -135,27 +134,35 @@ export default function Navi(){
         </Navigation>
     );
     return(<>
-    <Page fullWidth>
-        <Frame
-            navigation={NaviContents}
+    <AppProvider
+        i18n={{}}
+        theme={{
+            colorScheme: themecolor,
+        }}
         >
-            <Layout >
-            <PageTitle title={flag}/>
-            
-                {flag==='Orders'&&<><Orders /></>}
-                {flag==='Home'&&<><Peach /><ToDo /></>}
-                {flag==='Customers'&&<><Customers /></>}
-                
-                {flag==='Categories'&&<><Categories /></>}
-                {flag==='All Products'&&<><AllProducts /></>}
-                {flag==='Create Products'&&<><AddProducts /></>}
+            <Frame
+                navigation={NaviContents}
+            >
+                <Page fullWidth >
+                    <Layout>
+                        <PageTitle title={flag}/>
+                    
+                        {flag==='Orders'&&<><Orders /></>}
+                        {flag==='Home'&&<><Peach /><ToDo /></>}
+                        {flag==='Customers'&&<><Customers /></>}
+                        
+                        {flag==='Categories'&&<><Categories /></>}
+                        {flag==='All Products'&&<><AllProducts /></>}
+                        {flag==='Create Products'&&<><AddProducts /></>}
 
-                {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
-                {flag==='Shipment'&&<><Shipment /></>}
-                
-                
-            </Layout>
-        </Frame>
-    </Page>
+                        {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
+                        {flag==='Shipment'&&<><Shipment /></>}
+                        {flag==='Settings'&&<><SettingsCopy settingTheme="light" /></>}
+
+                    </Layout>
+                </Page>
+            </Frame>
+        </AppProvider>
     </>);
 };
+export default Navi;
