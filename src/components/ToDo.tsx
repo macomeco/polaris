@@ -7,7 +7,7 @@ export default function ToDo(){
         <Card>
         <Card.Section>
             やることリスト
-            Contents   blog add
+            Contents   一括管理
             Setting テーマ、文字サイズとか　管理者以外のユーザー設定とか
         </Card.Section>
         </Card>

@@ -1,36 +1,32 @@
-import { Card, IndexTable, Layout,TextStyle,useIndexResourceState} from "@shopify/polaris";
+import { Card, FormLayout, IndexTable, Layout,TextField,TextStyle,useIndexResourceState} from "@shopify/polaris";
+import { MobilePlusMajor } from '@shopify/polaris-icons';
+import { useState, useCallback } from "react";
 //news blog mail magazine sale
 //sort
 export default function Contents(){
     type blogType={
-        date:number,
+        date:string,
         title:string,
         id:string,
         show:boolean,
     };
     const blogs:blogType[]=[
         {
-            date: 20210101,
+            date: 'Wen Jul 14 2020',
             title:'Sample title',
             id:'1',
             show:true,
         },
         {
-            date: 20210102,
+            date: 'Thu Jul 15 2020',
             title:'Sample title 2',
             id: '2',
             show:false,
         },
         {
-            date: 20210101,
+            date: 'Tue Jul 13 2020',
             title:'Sample title 3',
             id:'3',
-            show:false,
-        },
-        {
-            date: 20210102,
-            title:'Sample title 4',
-            id: '4',
             show:false,
         },
     ];
@@ -62,13 +58,34 @@ export default function Contents(){
                 </IndexTable.Row>
             ),
             );
+            const [BlogCreate, setBlogCreate]=useState(false);
+            const BlogCreateToggle = useCallback(
+                ()=>{setBlogCreate((BlogCreate)=>true);}
+            ,[]);
+            const BlogCreateToggleCansel = useCallback(
+                ()=>{setBlogCreate((BlogCreate)=>false);}
+            ,[]);
+            const today = new Date();
+            const todaystr = today.toDateString();
     
         return (
             <Layout.Section>
-            <Card title="Blog">
-                
+            <Card primaryFooterAction={{icon:MobilePlusMajor,onAction:()=>{BlogCreateToggle()}}}>
+            <Card.Header
+                    title="Blog"
+                    actions={[
+                        {
+                            content: 'action',
+                            url: '/'
+                        },
+                        {
+                            content:'action2',
+                            url:'/'
+                        }
+                    ]}
+                >
+            </Card.Header>
                 <Card.Section >
-
                 <IndexTable
                     resourceName={resourceName}
                     itemCount={blogs.length}
@@ -86,6 +103,30 @@ export default function Contents(){
                 </IndexTable>
                 </Card.Section>
             </Card>
+        {BlogCreate===true &&
+            <Card title="Create new Article"primaryFooterAction={{content:'Add'}}secondaryFooterActions={[{content:'Cansel',onAction:()=>{BlogCreateToggleCansel()}}]}>
+                <Card.Section >
+                    <FormLayout>
+                        <FormLayout.Group>
+                        <TextField
+                            label="title"
+                            onChange={()=>{}}
+                        />
+                        <TextField
+                            label="date"
+                            onChange={()=>{}}
+                            value={todaystr}
+                        />
+                        </FormLayout.Group>
+                        <TextField
+                            label="article"
+                            onChange={()=>{}}
+                            multiline={3}
+                        />
+                    </FormLayout>
+                </Card.Section>
+            </Card>
+            }
         </Layout.Section>
         );
 }

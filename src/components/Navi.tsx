@@ -9,7 +9,7 @@ import Categories from "./Categories";
 import Blogs from "./Blogs";
 import News from './News';
 import Sales from "./Sales";
-import AddProducts from "./AddProducts";
+import AddProducts from "./CreateProducts";
 import Shipment from "./Shipment";
 import Orders from "./Orders";
 import Customers from "./Customers";
@@ -56,18 +56,14 @@ export default function Navi(){
                         subNavigationItems:[
                             {
                                 
-                                onClick: ()=>{handleflag('Products');},
+                                onClick: ()=>{handleflag('All Products');},
                                 url:'/',
                                 label:'All Products',
                                 //new:true,
                             },
-                            {
-                                url:'/path',
-                                label:'Create prduct',
-                                onClick: ()=>handleflag('Create Product'),
-                            }
                         ]
                         */
+                        
                     
                     },
                     {

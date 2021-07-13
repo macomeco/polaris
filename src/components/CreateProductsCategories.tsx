@@ -1,7 +1,7 @@
 import { Autocomplete, Card, Tag,TextContainer,Stack, } from "@shopify/polaris";
 import { useCallback, useState } from "react";
 
-export default function AddProductCategories() {
+export default function CreateProductCategories() {
     type shipment={
         value:string,
         label:string,

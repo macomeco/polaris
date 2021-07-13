@@ -59,7 +59,7 @@ export default function News(){
         ),
     );
     const [NewsCreate, setNewsCreate]=useState(false);
-    const NewsCreateToggleAdd = useCallback(
+    const NewsCreateToggle = useCallback(
         ()=>{setNewsCreate((NewsCreate)=>true);}
     ,[]);
     const NewsCreateToggleCansel = useCallback(
@@ -71,7 +71,7 @@ export default function News(){
         return (
             <>
             <Layout.Section >
-            <Card primaryFooterAction={{icon:MobilePlusMajor,onAction:()=>{NewsCreateToggleAdd()}}}>
+            <Card primaryFooterAction={{icon:MobilePlusMajor,onAction:()=>{NewsCreateToggle()}}}>
             <Card.Header
                     title="News"
                     actions={[
@@ -85,8 +85,8 @@ export default function News(){
                         }
                     ]}
                 >
-                </Card.Header>
-                <Card.Section >
+            </Card.Header>
+            <Card.Section>
                 <IndexTable
                     resourceName={resourceName}
                     itemCount={news.length}

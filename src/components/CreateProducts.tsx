@@ -1,8 +1,8 @@
 import { DropZone,FormLayout,Layout,Card,Form, TextField, ChoiceList, } from "@shopify/polaris";
 import { ViewMinor,SaveMinor,DeleteMinor } from '@shopify/polaris-icons';
-import AddProductsCategories from './AddProductsCategories'
+import AddProductsCategories from './CreateProductsCategories'
 //商品の売れ行き状況
-export default function AddProducts(){
+export default function CreateProducts(){
     
     return(
         <>
