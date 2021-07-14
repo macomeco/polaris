@@ -1,9 +1,8 @@
-import { Frame, Page,Layout,  Navigation,DisplayText, AppProvider } from "@shopify/polaris";
+import { Frame, Page,Layout,  Navigation,DisplayText, AppProvider, Card, RadioButton, Stack } from "@shopify/polaris";
 import {HomeMajor ,OrdersMajor,ProductsMajor,CustomersMajor, CategoriesMajor, FeaturedContentMajor,ShipmentMajor,SettingsMajor,StoreMajor} from "@shopify/polaris-icons";
 import { useCallback, useState, VFC } from "react";
 
 import Peach from './Peach';
-
 //import ProductsMaster from "./ProductsMaster";
 import Categories from "./Categories";
 import Blogs from "./Blogs";
@@ -15,25 +14,56 @@ import Orders from "./Orders";
 import Customers from "./Customers";
 import AllProducts from "./AllProducts";
 import ToDo from "./ToDo";
-//import Settings from './Settings';
-import SettingsCopy from './Settings_copy';
 
 const Navi: VFC=(NaviProps)=>{
     const [flag,setFlag]=useState('Home');
     const handleflag=useCallback (
-        (newflag)=>{setFlag(newflag);console.log(newflag); console.log(newflag)},[]
+        (newflag)=>{setFlag(newflag);},[]
     );
     type pagetitle={
         title:string;
     };
-    const PageTitle: React.VFC<pagetitle>=({setcolor})=>(
+    const PageTitle: React.VFC<pagetitle>=(props)=>(
         <Layout.Section>
             <DisplayText size="large">{props.title}</DisplayText>
         </Layout.Section>
     );
+    //colorscheme
+    type UserColorTheme="light" | "dark";
+    const [UserTheme,setUserTheme]=useState<UserColorTheme>("light");
+    const UserThemeToggle=useCallback(
+        (e,newteheme)=>{setUserTheme(newteheme);
+    },[]);
+    const Settings = (
+        <> 
+        <Layout.Section>
+            <Card>
+                <Card.Section title="Theme">
+                    <Stack vertical>
+                        <RadioButton
+                            label="Ligth"
+                            onChange={UserThemeToggle}
+                            checked={UserTheme === "light"}
+                            id="light"
+                            name="accounts"
+                        />
+                        <RadioButton
+                            label="Dark"
+                            onChange={UserThemeToggle}
+                            checked={UserTheme === "dark"}
+                            id="dark"
+                            name="accounts"
+                        />
+                    </Stack>
+                </Card.Section>
+                <Card.Section title="Font Size">
 
-    const [themecolor,setthemecolor]=useState<"light" | "dark" | "inverse" | undefined>(NaviProps.setcolor);
-
+                </Card.Section>
+            </Card>
+        </Layout.Section>
+        </>
+    );
+    
     const NaviContents=(
         <Navigation location="/">
             <Navigation.Section
@@ -62,8 +92,6 @@ const Navi: VFC=(NaviProps)=>{
                             },
                         ]
                         */
-                        
-                    
                     },
                     {
                         url:'/',
@@ -136,33 +164,30 @@ const Navi: VFC=(NaviProps)=>{
     return(<>
     <AppProvider
         i18n={{}}
-        theme={{
-            colorScheme: themecolor,
-        }}
+        theme={{ colorScheme: UserTheme, }}
+        
+    >
+        <Frame
+            navigation={NaviContents}
         >
-            <Frame
-                navigation={NaviContents}
-            >
-                <Page fullWidth >
-                    <Layout>
-                        <PageTitle title={flag}/>
+            <Page fullWidth >
+                <Layout>
+                    <PageTitle title={flag}/>
+                    {flag==='Orders'&&<><Orders /></>}
+                    {flag==='Home'&&<><Peach /><ToDo /></>}
+                    {flag==='Customers'&&<><Customers /></>}
                     
-                        {flag==='Orders'&&<><Orders /></>}
-                        {flag==='Home'&&<><Peach /><ToDo /></>}
-                        {flag==='Customers'&&<><Customers /></>}
-                        
-                        {flag==='Categories'&&<><Categories /></>}
-                        {flag==='All Products'&&<><AllProducts /></>}
-                        {flag==='Create Products'&&<><AddProducts /></>}
+                    {flag==='Categories'&&<><Categories /></>}
+                    {flag==='All Products'&&<><AllProducts /></>}
+                    {flag==='Create Products'&&<><AddProducts /></>}
 
-                        {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
-                        {flag==='Shipment'&&<><Shipment /></>}
-                        {flag==='Settings'&&<><SettingsCopy settingTheme="light" /></>}
-
-                    </Layout>
-                </Page>
-            </Frame>
-        </AppProvider>
+                    {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
+                    {flag==='Shipment'&&<><Shipment /></>}
+                    {flag==='Settings'&&Settings}
+                </Layout>
+            </Page>
+        </Frame>
+    </AppProvider>
     </>);
 };
 export default Navi;

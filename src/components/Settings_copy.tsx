@@ -1,22 +1,15 @@
-import { Card, Layout, RadioButton, Stack, ThemeProvider } from "@shopify/polaris";
+import { Card, Layout, RadioButton, Stack} from "@shopify/polaris";
 import { useCallback, useState, VFC } from "react";
 
-type SettingType={
-    settingTheme:"light" | "dark" | "inverse" | undefined;
-}
-
-const SettingsCopy: VFC<SettingType>=({settingTheme})=>{
-    type Theme="light" | "dark" | "inverse" | undefined;
-    const [UserTheme,setUserTheme] = useState<Theme>(settingTheme);
+const SettingsCopy: VFC=()=>{
+    type ColorTheme="light" | "dark" | "inverse" | undefined;
+    const [UserTheme,setUserTheme] = useState<ColorTheme>("light");
     const UserThemeToggle=useCallback(
         (newtheme)=>{setUserTheme(newtheme);
-            <Navi setcolor={UserTheme} />
     },[]);
     
     return(
         <>
-        
-        <ThemeProvider theme={{colorScheme: 'dark'}} />
         <Layout.Section>
             <Card>
                 <Card.Section title="Theme">
