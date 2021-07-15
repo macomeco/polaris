@@ -1,40 +1,45 @@
 import { Autocomplete, Card, Tag,TextContainer,Stack, } from "@shopify/polaris";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export default function CreateProductCategories() {
     type shipment={
         value:string,
         label:string,
     };
-    const deselectedOptions = [
-        {value: 'rustic', label: 'Rustic'},
-        {value: 'antique', label: 'Antique'},
-        {value: 'vinyl', label: 'Vinyl'},
-        {value: 'vintage', label: 'Vintage'},
-        {value: 'refurbished', label: 'Refurbished'},
-    ];
+    const memo = useMemo(()=>{
+        const deselectedOptions = [
+            {value: 'rustic', label: 'Rustic'},
+            {value: 'antique', label: 'Antique'},
+            {value: 'vinyl', label: 'Vinyl'},
+            {value: 'vintage', label: 'Vintage'},
+            {value: 'refurbished', label: 'Refurbished'},
+        ];
+        return deselectedOptions;
+    },[]);
 
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState('');
-    const [options, setOptions] = useState<shipment[]>(deselectedOptions);
+    const [options, setOptions] = useState<shipment[]>(memo);
     const updateText = useCallback (
         (value) => {
             setInputValue(value);
         if (value === '') {
-            setOptions(deselectedOptions);
+            setOptions(memo);
             return;
         }
         const filterRegex = new RegExp(value, 'i');
-        const resultOptions = deselectedOptions.filter((option) =>
+        const resultOptions = memo.filter((option) =>
             option.label.match(filterRegex),
         );
+        /* ??これ必要かな？
         let endIndex:number = resultOptions.length - 1;
         if (resultOptions.length === 0) {
             endIndex = 0;
         }
+        */
         setOptions(resultOptions);
         },
-    [deselectedOptions],
+    [memo],
     );
     const removeTag = useCallback(
         (tag) => () => {

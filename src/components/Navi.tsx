@@ -37,7 +37,7 @@ const Navi: VFC=(NaviProps)=>{
     const Settings = (
         <> 
         <Layout.Section>
-            <Card>
+            <Card primaryFooterAction={{content:'Save'}}>
                 <Card.Section title="Theme">
                     <Stack vertical>
                         <RadioButton

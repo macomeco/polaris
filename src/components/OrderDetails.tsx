@@ -1,4 +1,4 @@
-import { useIndexResourceState, TextField, IndexTable, TextStyle, Card, Filters, Select, Layout, Badge } from "@shopify/polaris";
+import { useIndexResourceState, TextField, IndexTable, TextStyle, Card, Filters, Select, Badge } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 
 export default function OrderDetails(){
