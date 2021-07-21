@@ -25,7 +25,7 @@ const SettingsCopy: VFC=()=>{
         </Layout.AnnotatedSection>
         <Layout.AnnotatedSection
             title="Store Adress"
-            description="store xxxxx ">
+            description="store xxxxx">
             <Card>
             <Card.Section title="detail-I">
                     <TextField label="I-I" onChange={()=>{}} />
