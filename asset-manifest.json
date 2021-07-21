@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/polaris/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/polaris/static/js/main.31fb6f86.chunk.js",
-    "main.js.map": "/polaris/static/js/main.31fb6f86.chunk.js.map",
+    "main.js": "/polaris/static/js/main.e8c791b3.chunk.js",
+    "main.js.map": "/polaris/static/js/main.e8c791b3.chunk.js.map",
     "runtime-main.js": "/polaris/static/js/runtime-main.30f85610.js",
     "runtime-main.js.map": "/polaris/static/js/runtime-main.30f85610.js.map",
     "static/css/2.df136c2f.chunk.css": "/polaris/static/css/2.df136c2f.chunk.css",
-    "static/js/2.284ddaa3.chunk.js": "/polaris/static/js/2.284ddaa3.chunk.js",
-    "static/js/2.284ddaa3.chunk.js.map": "/polaris/static/js/2.284ddaa3.chunk.js.map",
+    "static/js/2.f95881c8.chunk.js": "/polaris/static/js/2.f95881c8.chunk.js",
+    "static/js/2.f95881c8.chunk.js.map": "/polaris/static/js/2.f95881c8.chunk.js.map",
     "static/js/3.e60e4f21.chunk.js": "/polaris/static/js/3.e60e4f21.chunk.js",
     "static/js/3.e60e4f21.chunk.js.map": "/polaris/static/js/3.e60e4f21.chunk.js.map",
     "index.html": "/polaris/index.html",
     "static/css/2.df136c2f.chunk.css.map": "/polaris/static/css/2.df136c2f.chunk.css.map",
     "static/css/main.9d5b29c0.chunk.css.map": "/polaris/static/css/main.9d5b29c0.chunk.css.map",
-    "static/js/2.284ddaa3.chunk.js.LICENSE.txt": "/polaris/static/js/2.284ddaa3.chunk.js.LICENSE.txt"
+    "static/js/2.f95881c8.chunk.js.LICENSE.txt": "/polaris/static/js/2.f95881c8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.30f85610.js",
     "static/css/2.df136c2f.chunk.css",
-    "static/js/2.284ddaa3.chunk.js",
+    "static/js/2.f95881c8.chunk.js",
     "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.31fb6f86.chunk.js"
+    "static/js/main.e8c791b3.chunk.js"
   ]
 }
