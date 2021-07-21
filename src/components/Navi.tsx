@@ -14,6 +14,7 @@ import Orders from "./Orders";
 import Customers from "./Customers";
 import AllProducts from "./AllProducts";
 import ToDo from "./ToDo";
+import SettingsSote from './Settings_store';
 
 const Navi: VFC=(NaviProps)=>{
     const [flag,setFlag]=useState('Home');
@@ -192,7 +193,7 @@ const Navi: VFC=(NaviProps)=>{
 
                     {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
                     {flag==='Shipment'&&<><Shipment /></>}
-                    {flag==='Settings'&&Settings}
+                    {flag==='Settings'&&<>{Settings}<SettingsSote /></>}
                 </Layout>
             </Page>
         </Frame>
