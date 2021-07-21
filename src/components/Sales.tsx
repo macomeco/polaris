@@ -10,14 +10,28 @@ export default function Salse() {
     return (
         <Layout.Section>
     <Card>
+        <Card.Header
+            title="Sale"
+            actions={[
+                {
+                    content: 'action',
+                    url: '/'
+                },
+                {
+                    content:'action2',
+                    url:'/'
+                }
+            ]}
+                >
+            </Card.Header>
         <ResourceList
             resourceName={{singular: 'blog post', plural: 'blog posts'}}
             items={[
                 {
                     id: '6',
-                    url: 'posts/6',
-                    title: 'How To Get Value From Wireframes',
-                    author: 'Jonathan Mangrove',
+                    url: 'sale/6',
+                    title: 'Autumn Sale',  //セール名
+                    author: 'Oct 15,2020 - Oct 21,2020',        //期間
                 },
             ]}
                 selectedItems={selectedItems}
@@ -25,7 +39,7 @@ export default function Salse() {
                 selectable
                 renderItem={(item) => {
                 const {id, url, title, author} = item;
-                const authorMarkup = author ? <div>by {author}</div> : null;
+                const authorMarkup = author ? <div>{author}</div> : null;
                 return (
                     <ResourceItem
                     id={id}
