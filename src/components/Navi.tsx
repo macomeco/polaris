@@ -170,16 +170,25 @@ const Navi: VFC=(NaviProps)=>{
         <Frame
             navigation={NaviContents}
         >
+            {flag==='Create Products'&&
+            <>
+                <Page narrowWidth>
+                    <Layout>
+                        <PageTitle title='Create Products'/>
+                        <AddProducts />
+                    </Layout>
+                </Page>
+            </>}
+                
             <Page fullWidth >
                 <Layout>
-                    <PageTitle title={flag}/>
+                    {flag !== 'Create Products' && <PageTitle title={flag} />}
                     {flag==='Orders'&&<><Orders /></>}
                     {flag==='Home'&&<><Peach /><ToDo /></>}
                     {flag==='Customers'&&<><Customers /></>}
                     
                     {flag==='Categories'&&<><Categories /></>}
                     {flag==='All Products'&&<><AllProducts /></>}
-                    {flag==='Create Products'&&<><AddProducts /></>}
 
                     {flag==='Contents'&&<><News /><Blogs /><Sales /></>}
                     {flag==='Shipment'&&<><Shipment /></>}
